@@ -1,6 +1,7 @@
 #/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+import MySQLdb
 import datetime
 import threading
 import time
