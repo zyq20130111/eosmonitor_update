@@ -63,9 +63,11 @@ class accountMgr(object):
 
     def update_token(self,account):
        print "update_token",account
+       return True
 
     def update_stake(self,account):
        print "update_stake",account
+       return True
 
     def Start(self):
          
