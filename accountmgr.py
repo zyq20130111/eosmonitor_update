@@ -31,16 +31,18 @@ class accountMgr(object):
 
            if(not self.start_loop):
             
-                self.min_account_id = self.get_min_account_id();
-                self.max_account_id = self.get_max_account_id();
-                self.cur_account_id = self.min_account_id;
-                self.start_loop = True;
+                self.min_account_id = self.get_min_account_id()
+                self.max_account_id = self.get_max_account_id()
+                self.cur_account_id = self.min_account_id
+                self.start_loop = True
+
+                print self.min_account_id,self.max_account_id
            
            if(self.cur_account_id >= 0):
            
 	      if(self.monitoraccount(self.cur_account_id)):
 
-                  self.cur_account_id = self.cur_account_id + 1;
+                  self.cur_account_id = self.cur_account_id + 1
                   if(self.cur_account_id > self.max_account_id):
                      self.start_loop = false; 
 
