@@ -1,6 +1,6 @@
 #/usr/bin/python
 # -*- coding: UTF-8 -*-
-
+elect name from accounts where id
 import MySQLdb
 import datetime
 import threading
@@ -119,7 +119,7 @@ class accountMgr(object):
          
         return max
 
-    def get_account_name(self,accoutid):
+    def get_account_name(self,accountid):
          
        account = ""
        try:
