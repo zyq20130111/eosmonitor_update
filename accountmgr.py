@@ -29,20 +29,20 @@ class accountMgr(object):
 
        while(True):
 
-           if(not start_loop):
+           if(not self.start_loop):
             
-                min_account_id = get_min_account_id();
-                max_account_id = get_max_account_id();
-                cur_account_id = min_account_id;
-                start_loop = true;
+                self.min_account_id = self.get_min_account_id();
+                self.max_account_id = self.get_max_account_id();
+                self.cur_account_id = self.min_account_id;
+                self.start_loop = true;
            
-           if(cur_account_id >= 0):
+           if(self.cur_account_id >= 0):
            
-	      if(self.monitoraccount(cur_account_id)):
+	      if(self.monitoraccount(self.cur_account_id)):
 
-                  cur_account_id = cur_account_id + 1;
-                  if(cur_account_id > max_account_id):
-                     start_loop = false; 
+                  self.cur_account_id = self.cur_account_id + 1;
+                  if(self.cur_account_id > self.max_account_id):
+                     self.start_loop = false; 
 
            time.sleep(1)
     
@@ -50,12 +50,12 @@ class accountMgr(object):
 
         flag = False
 
-        account = get_account_name(accountid)
+        account = self.get_account_name(accountid)
         if(account == ""):
             return True
 	
-        flag = update_token(account)
-        flag = update_stake(account)
+        flag = self.update_token(account)
+        flag = self.update_stake(account)
 
         return flag;                      
 
@@ -67,10 +67,10 @@ class accountMgr(object):
 
     def Start(self):
          
-         start_loop = False
-         min_account_id = 0
-         max_account_id = 0
-	 cur_account_id = 0
+         self.start_loop = False
+         self.min_account_id = 0
+         self.max_account_id = 0
+	 self.cur_account_id = 0
  
          t =threading.Thread(target=self.threadFun,args=(1,))
          t.setDaemon(True)#设置线程为后台线程
