@@ -34,7 +34,7 @@ class accountMgr(object):
                 self.min_account_id = self.get_min_account_id();
                 self.max_account_id = self.get_max_account_id();
                 self.cur_account_id = self.min_account_id;
-                self.start_loop = true;
+                self.start_loop = True;
            
            if(self.cur_account_id >= 0):
            
