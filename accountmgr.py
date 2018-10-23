@@ -46,7 +46,7 @@ class accountMgr(object):
                   if(self.cur_account_id > self.max_account_id):
                      self.start_loop = false; 
 
-           time.sleep(1)
+           time.sleep(0.001)
     
     def monitoraccount(self,accountid):
 
