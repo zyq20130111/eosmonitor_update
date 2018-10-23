@@ -29,7 +29,7 @@ class accountMgr(object):
 
        while(True):
 
-           if(!start_loop):
+           if(not start_loop):
             
                 min_account_id = get_min_account_id();
                 max_account_id = get_max_account_id();
