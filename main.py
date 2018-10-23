@@ -3,7 +3,7 @@
 import threading
 import time
 import sys
-from accountmgr.py import accountMgr
+from accountmgr import accountMgr
 
 if __name__ == '__main__':
 
