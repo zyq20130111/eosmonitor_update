@@ -36,14 +36,15 @@ class accountMgr(object):
                 cur_account_id = min_account_id;
                 start_loop = true;
            
-            if(cur_account_id >= 0):
-               if(self.monitoraccount(cur_account_id)):
+           if(cur_account_id >= 0):
+           
+	      if(self.monitoraccount(cur_account_id)):
 
                   cur_account_id = cur_account_id + 1;
                   if(cur_account_id > max_account_id):
                      start_loop = false; 
 
-            time.sleep(1)
+           time.sleep(1)
     
     def monitoraccount(self,accountid):
 
