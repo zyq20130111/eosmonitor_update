@@ -64,7 +64,7 @@ class accountMgr(object):
     def update_token(self,account):
        print "update_token",account
 
-    def udpate_stake(self,account):
+    def update_stake(self,account):
        print "update_stake",account
 
     def Start(self):
