@@ -59,11 +59,11 @@ class accountMgr(object):
 
         return flag;                      
 
-    def update_token(self):
-       print("update_token"
+    def update_token(self,account):
+       print "update_token",account
 
-    def udpate_stake(self):
-       print("update_stake")
+    def udpate_stake(self,account):
+       print "update_stake",account
 
     def Start(self):
          
