@@ -186,7 +186,7 @@ class accountMgr(object):
                       if("self_delegated_bandwidth" in js):
                          cpu_staked = js["self_delegated_bandwidth"]["cpu_weight"]
                          cpu_delegated = cpu_total - cpu_staked
-                      else
+                      else:
                          cpu_delegated = cpu_total
 
 
@@ -199,7 +199,7 @@ class accountMgr(object):
                       if("self_delegated_bandwidth" in js):
                          net_staked  = js["self_delegated_bandwidth"]["net_weight"]
                          net_delegated = net_total - net_staked
-                      else
+                      else:
                           net_delegated = net_total
 
 		  if("refund_request" in js):
