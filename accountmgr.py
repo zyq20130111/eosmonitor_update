@@ -91,10 +91,10 @@ class accountMgr(object):
             for row in cursor.fetchall():
                 min = row[0]
 
-         except:
+        except:
             print("get_min_account_id error")
          
-         return min
+        return min
 
     def get_max_account_id(self):
 
@@ -111,10 +111,10 @@ class accountMgr(object):
             for row in cursor.fetchall():
                 max = row[0]
 
-         except:
+        except:
             print("get_max_account_id error")
          
-         return max
+        return max
 
     def get_account_name(self,accoutid):
          
