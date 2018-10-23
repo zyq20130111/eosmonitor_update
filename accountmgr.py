@@ -85,7 +85,7 @@ class accountMgr(object):
         headers = {'content-type': "application/json"}
         url = Config.HTTP_URL + "get_table_rows"
         try:
-             start = ' {0}'.format(start)
+             start = '"{0}"'.format(token.symbol)
              contract = token.contract_owner
              scope   = name
              r = requests.post(url,data =json.dumps({"scope":scope,"code":contract,"table":"accounts","json":True,"limit":3,"lower_bound":start}),headers = headers);
@@ -97,23 +97,19 @@ class accountMgr(object):
 
                       for row in js["rows"]:
 
-                         symbol    =  row["symbol"]
-                         quantity  =  row["quantity"]
-                         precision =  row["precision"]
+                         balance   =  row["balance"]
+                         balances = balance.split(" ")
+                         
+                         symbol    =  balances[1]
+                         quantity  =  balances[0]
 
                          if(symbol == token.symbol):
-        		     self.save_token(name,symbol, quantity,precision,token.contract_owner)
+        		     self.save_token(name,symbol, balance,token.symbol_precision,token.contract_owner)
                               
-                 if( (not js is None) and (js["more"] == False) ):
-                         self.sartAccount = "" 
-                         print "start request"         
-                    
              else:
-                 print "request error1"
-                 self.sartAccount = ""
+                 print "update_in_token request error1"
         except:
-             print "request error2"
-             self.sartAccount = "" 
+             print "update_in_token request error2"
 
     def save_token(self,account,symbol,quantity,precision,contract):
 
@@ -218,7 +214,7 @@ class accountMgr(object):
                   r = requests.post(url,data =json.dumps({"scope":"eosio","code":"eosio","table":"voters","json":True,"table_key":"owner","lower_bound":account}),headers = headers);
                   if( r.status_code == 200):
                       js = json.loads(r.text)
-                      if(len(js["rows") > 0):
+                      if(len(js["rows"]) > 0):
                           total_stake = js["rows"][0]["staked"]
 
                    totalasset = total_stake + unstaking + liquid
