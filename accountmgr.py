@@ -1,6 +1,5 @@
 #/usr/bin/python
 # -*- coding: UTF-8 -*-
-elect name from accounts where id
 import MySQLdb
 import datetime
 import threading
