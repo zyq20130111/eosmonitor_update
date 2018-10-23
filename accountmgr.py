@@ -123,7 +123,7 @@ class accountMgr(object):
             cursor.close()
             db.close()
 
-        except:
+       except:
             print("get_min_account_id error")
 	     
     def update_stake(self,account):
