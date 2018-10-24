@@ -180,17 +180,19 @@ class accountMgr(object):
                   print "111"
 		  if( "core_liquid_balance" in js):
                       liquid = js["core_liquid_balance"]
-
+                      print "a"
                   if("total_resources" in js):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
                          cpu_total = total_resources["cpu_weight"]
-
+                         print "b"
                       if("self_delegated_bandwidth" in js):
                          cpu_staked = js["self_delegated_bandwidth"]["cpu_weight"]
                          cpu_delegated = cpu_total - cpu_staked
+                         print "c"
                       else:
                          cpu_delegated = cpu_total
+                         print "d"
 
 
                   print "222"
