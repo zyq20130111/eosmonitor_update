@@ -240,7 +240,7 @@ class accountMgr(object):
        return True
 
     def save_stake(self,account,liquid,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_stake,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage):
-        print("save tokens")
+        print("save stake")
 
         try:
             db = MySQLdb.connect(Config.DB_SERVER, Config.DB_USER, Config.DB_PWD, Config.DB_NAME, charset='utf8' )
@@ -252,7 +252,7 @@ class accountMgr(object):
             cursor.close()
             db.close()
         except:
-            print("save_stake error")
+            print("save stake error")
 
     def Start(self):
          
