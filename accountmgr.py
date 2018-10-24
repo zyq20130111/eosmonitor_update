@@ -210,9 +210,10 @@ class accountMgr(object):
 
                   print "333"                  
 		  if("refund_request" in js):
-                      net = self.getTokenNum(js["refund_request"]["net_amount"])
-                      cpu = self.getTokenNum(js["refund_request"]["cpu_amount"])
-                      unstaking = net + cpu
+                      if(not js["refund_request"] is None):
+                          net = self.getTokenNum(js["refund_request"]["net_amount"])
+                          cpu = self.getTokenNum(js["refund_request"]["cpu_amount"])
+                          unstaking = net + cpu
 
 		  print "4444"                  
             	  staked = cpu_staked + net_staked;
