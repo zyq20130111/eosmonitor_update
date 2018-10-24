@@ -188,10 +188,11 @@ class accountMgr(object):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
                          cpu_total = self.getTokenNum(total_resources["cpu_weight"]) * 10000
-                         
+                         print cpu_total                         
                       if("self_delegated_bandwidth" in js):
                          cpu_staked = self.getTokenNum(js["self_delegated_bandwidth"]["cpu_weight"]) * 10000
                          cpu_delegated = cpu_total - cpu_staked
+                         print cpu_staked
                       else:
                          cpu_delegated = cpu_total
 		
