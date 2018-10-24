@@ -186,11 +186,11 @@ class accountMgr(object):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
                          cpu_total = self.getTokenNum(total_resources["cpu_weight"]) * 10000
-                         print cpu_total                         
+                               
                       if("self_delegated_bandwidth" in js):
                          cpu_staked = self.getTokenNum(js["self_delegated_bandwidth"]["cpu_weight"]) * 10000
                          cpu_delegated = cpu_total - cpu_staked
-                         print cpu_staked
+                         
                       else:
                          cpu_delegated = cpu_total
 		
@@ -199,7 +199,7 @@ class accountMgr(object):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
                          net_total = self.getTokenNum(total_resources["net_weight"]) * 10000
-                         print "net_total",net_total
+                        
                       if("self_delegated_bandwidth" in js):
                          net_staked  = self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"])
                          net_delegated = net_total - net_staked
@@ -224,7 +224,7 @@ class accountMgr(object):
                           js = json.loads(r.text)
                           if(len(js["rows"]) > 0):
                               total_stake = js["rows"][0]["staked"]
-                              print total_stake
+                             
                   except:
                        print "update stake error get_table_rows"
 
@@ -241,6 +241,7 @@ class accountMgr(object):
         print("save stake")
 
         try:
+            print account,liquid,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_stake,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage
             db = MySQLdb.connect(Config.DB_SERVER, Config.DB_USER, Config.DB_PWD, Config.DB_NAME, charset='utf8' )
             cursor = db.cursor()
 
