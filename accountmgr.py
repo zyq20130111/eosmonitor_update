@@ -181,7 +181,7 @@ class accountMgr(object):
                   ram_quota     = js["ram_quota"]
                   ram_usage     = js["ram_usage"]
 
-                  print "111"
+                  
 		  if( "core_liquid_balance" in js):
                       liquid = self.getTokenNum(js["core_liquid_balance"]) * 10000
                   if("total_resources" in js):
@@ -196,14 +196,14 @@ class accountMgr(object):
                       else:
                          cpu_delegated = cpu_total
 		
-                  print "222"
+                  
                   if("total_resources" in js):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
                          net_total = self.getTokenNum(total_resources["net_weight"]) * 10000
-
+                         print "net_total",net_total
                       if("self_delegated_bandwidth" in js):
-                         net_staked  = self.self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"])
+                         net_staked  = self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"])
                          net_delegated = net_total - net_staked
                       else:
                           net_delegated = net_total
