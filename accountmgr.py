@@ -100,7 +100,7 @@ class accountMgr(object):
                          balance   =  row["balance"]
                          balances = balance.split(" ")
                          
-                         symbol    =  balances[1]
+                         symbol    =  balances[1].strip()
                          quantity  =  balances[0]
 
                          if(symbol == token.symbol):
