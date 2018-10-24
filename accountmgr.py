@@ -111,7 +111,7 @@ class accountMgr(object):
         except:
              print "update_in_token request error2"
 
-    def getTokenNum(balance):
+    def getTokenNum(self,balance):
        balances = balance.split(" ")
        return float(balances[0].strip())
 
