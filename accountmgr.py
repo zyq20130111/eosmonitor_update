@@ -188,6 +188,7 @@ class accountMgr(object):
                          print "b"
                       if("self_delegated_bandwidth" in js):
                          cpu_staked = js["self_delegated_bandwidth"]["cpu_weight"]
+                         print cpu_staked
                          cpu_delegated = cpu_total - cpu_staked
                          print "c"
                       else:
