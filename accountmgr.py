@@ -218,16 +218,9 @@ class accountMgr(object):
             	  staked = cpu_staked + net_staked;
                   total = staked + unstaking + liquid;
                                     
-                  try:
-                      url = Config.HTTP_URL + "get_table_rows"
-                      r = requests.post(url,data =json.dumps({"scope":"eosio","code":"eosio","table":"voters","json":True,"table_key":"owner","lower_bound":account}),headers = headers);
-                      if( r.status_code == 200):
-                          js = json.loads(r.text)
-                          if(len(js["rows"]) > 0):
-                              total_stake = js["rows"][0]["staked"]
-                             
-                  except:
-                       print "update stake error get_table_rows"
+		  if("voter_info" in js):
+                        if(not js["voter_info"] is None):
+                            total_stake = js["voter_info"]["staked"]
 
                   totalasset = total_stake + unstaking + liquid
                   
