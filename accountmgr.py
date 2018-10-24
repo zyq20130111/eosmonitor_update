@@ -202,7 +202,7 @@ class accountMgr(object):
                          net_total = self.getTokenNum(total_resources["net_weight"]) * 10000
                         
                       if("self_delegated_bandwidth" in js):
-                         net_staked  = self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"])
+                         net_staked  = self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"]) * 10000
                          net_delegated = net_total - net_staked
                       else:
                           net_delegated = net_total
@@ -210,8 +210,8 @@ class accountMgr(object):
                                     
 		  if("refund_request" in js):
                       if(not js["refund_request"] is None):
-                          net = self.getTokenNum(js["refund_request"]["net_amount"])
-                          cpu = self.getTokenNum(js["refund_request"]["cpu_amount"])
+                          net = self.getTokenNum(js["refund_request"]["net_amount"])  * 10000
+                          cpu = self.getTokenNum(js["refund_request"]["cpu_amount"]) * 10000
                           unstaking = net + cpu
 
 		                    
