@@ -194,8 +194,8 @@ class accountMgr(object):
                          cpu_delegated = cpu_total - cpu_staked
                       else:
                          cpu_delegated = cpu_total
-
-
+		
+                  print "222"
                   if("total_resources" in js):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
@@ -207,10 +207,10 @@ class accountMgr(object):
                       else:
                           net_delegated = net_total
 
-                  
+                  print "333"                  
 		  if("refund_request" in js):
-                      net = js["refund_request"]["net_amount"]
-                      cpu = js["refund_request"]["cpu_amount"]
+                      net = self.getTokenNum(js["refund_request"]["net_amount"])
+                      cpu = self.getTokenNum(js["refund_request"]["cpu_amount"])
                       unstaking = net + cpu
 
                   
