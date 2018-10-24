@@ -211,7 +211,7 @@ class accountMgr(object):
 
             	  staked = cpu_staked + net_staked;
                   total = staked + unstaking + liquid;
-                  
+                  print "aaaaaaaa"                  
                   try:
                       url = Config.HTTP_URL + "get_table_rows"
                       r = requests.post(url,data =json.dumps({"scope":"eosio","code":"eosio","table":"voters","json":True,"table_key":"owner","lower_bound":account}),headers = headers);
