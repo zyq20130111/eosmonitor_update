@@ -111,6 +111,10 @@ class accountMgr(object):
         except:
              print "update_in_token request error2"
 
+    def getTokenNum(balance):
+       balances = balance.split(" ")
+       return float(balances[0].strip())
+
     def save_token(self,account,symbol,quantity,precision,contract):
 
        print "save_toke"
@@ -179,45 +183,40 @@ class accountMgr(object):
 
                   print "111"
 		  if( "core_liquid_balance" in js):
-                      liquid = js["core_liquid_balance"]
-                      print "a"
+                      liquid = self.getTokenNum(js["core_liquid_balance"]) * 10000
                   if("total_resources" in js):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
-                         cpu_total = total_resources["cpu_weight"]
-                         print "b"
+                         cpu_total = self.getTokenNum(total_resources["cpu_weight"]) * 10000
+                         
                       if("self_delegated_bandwidth" in js):
-                         cpu_staked = js["self_delegated_bandwidth"]["cpu_weight"]
-                         print cpu_staked
+                         cpu_staked = self.getTokenNum(js["self_delegated_bandwidth"]["cpu_weight"]) * 10000
                          cpu_delegated = cpu_total - cpu_staked
-                         print "c"
                       else:
                          cpu_delegated = cpu_total
-                         print "d"
 
 
-                  print "222"
                   if("total_resources" in js):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
-                         net_total = total_resources["net_weight"]
+                         net_total = self.getTokenNum(total_resources["net_weight"]) * 10000
 
                       if("self_delegated_bandwidth" in js):
-                         net_staked  = js["self_delegated_bandwidth"]["net_weight"]
+                         net_staked  = self.self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"])
                          net_delegated = net_total - net_staked
                       else:
                           net_delegated = net_total
 
-                  print "333"
+                  
 		  if("refund_request" in js):
                       net = js["refund_request"]["net_amount"]
                       cpu = js["refund_request"]["cpu_amount"]
                       unstaking = net + cpu
 
-                  print "4444"
+                  
             	  staked = cpu_staked + net_staked;
                   total = staked + unstaking + liquid;
-                  print "aaaaaaaa"                  
+                                    
                   try:
                       url = Config.HTTP_URL + "get_table_rows"
                       r = requests.post(url,data =json.dumps({"scope":"eosio","code":"eosio","table":"voters","json":True,"table_key":"owner","lower_bound":account}),headers = headers);
