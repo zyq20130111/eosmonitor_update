@@ -177,6 +177,7 @@ class accountMgr(object):
                   ram_quota     = js["ram_quota"]
                   ram_usage     = js["ram_usage"]
 
+                  print "111"
 		  if( "core_liquid_balance" in js):
                       liquid = js["core_liquid_balance"]
 
@@ -192,7 +193,7 @@ class accountMgr(object):
                          cpu_delegated = cpu_total
 
 
-
+                  print "222"
                   if("total_resources" in js):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
@@ -204,11 +205,13 @@ class accountMgr(object):
                       else:
                           net_delegated = net_total
 
+                  print "333"
 		  if("refund_request" in js):
                       net = js["refund_request"]["net_amount"]
                       cpu = js["refund_request"]["cpu_amount"]
                       unstaking = net + cpu
 
+                  print "4444"
             	  staked = cpu_staked + net_staked;
                   total = staked + unstaking + liquid;
                   print "aaaaaaaa"                  
