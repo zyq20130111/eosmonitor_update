@@ -163,10 +163,8 @@ class accountMgr(object):
 
        try:
            r = requests.post(url,data =json.dumps({"account_name":account}),headers = headers);
-           print r
            if( r.status_code == 200):
               js = json.loads(r.text)
-              print js
               if (not js is None):
             
                   cpu_used = js["cpu_limit"]["used"]
@@ -208,14 +206,14 @@ class accountMgr(object):
                       else:
                           net_delegated = net_total
 
-                  print "333"                  
+                                    
 		  if("refund_request" in js):
                       if(not js["refund_request"] is None):
                           net = self.getTokenNum(js["refund_request"]["net_amount"])
                           cpu = self.getTokenNum(js["refund_request"]["cpu_amount"])
                           unstaking = net + cpu
 
-		  print "4444"                  
+		                    
             	  staked = cpu_staked + net_staked;
                   total = staked + unstaking + liquid;
                                     
@@ -231,7 +229,7 @@ class accountMgr(object):
                        print "update stake error get_table_rows"
 
                   totalasset = total_stake + unstaking + liquid
-                  print "55555"
+                  
                   self.save_stake(account,liquid ,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_staked,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage)
        
        except:
