@@ -123,6 +123,7 @@ class accountMgr(object):
             cursor = db.cursor()
             sql = "INSERT INTO tokens (account,symbol ,balance,symbol_precision,contract_owner)  VALUES( %s, %s ,%s , %d ,%s ) ON DUPLICATE KEY UPDATE balance=%s,symbol_precision=%d" %(account,symbol,quantity,precision,contract,quantity,symbol_precision)
             cursor.execute(sql)
+            db.commit()
 
             cursor.close()
             db.close()
