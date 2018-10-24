@@ -159,6 +159,7 @@ class accountMgr(object):
 
        try:
            r = requests.post(url,data =json.dumps({"account_name":account}),headers = headers);
+           print r
            if( r.status_code == 200):
               js = json.loads(r.text)
 
