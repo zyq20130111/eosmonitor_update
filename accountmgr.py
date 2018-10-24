@@ -214,7 +214,7 @@ class accountMgr(object):
                       cpu = self.getTokenNum(js["refund_request"]["cpu_amount"])
                       unstaking = net + cpu
 
-                  
+		  print "4444"                  
             	  staked = cpu_staked + net_staked;
                   total = staked + unstaking + liquid;
                                     
@@ -230,6 +230,7 @@ class accountMgr(object):
                        print "update stake error get_table_rows"
 
                   totalasset = total_stake + unstaking + liquid
+                  print "55555"
                   self.save_stake(account,liquid ,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_staked,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage)
        
        except:
