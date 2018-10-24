@@ -248,6 +248,7 @@ class accountMgr(object):
 
             sql = "INSERT INTO stakes (account,liquid ,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_staked,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage)  VALUES( '%s',%d ,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d ) ON DUPLICATE KEY UPDATE liquid=%d ,staked=%d,unstaking=%d,total=%d,total_stake=%d,totalasset=%d,cpu_total=%d,cpu_staked=%d,cpu_delegated=%d,cpu_used=%d,cpu_available=%d,cpu_limit=%d,net_total=%d,net_staked=%d,net_delegated=%d,net_used=%d,net_available=%d,net_limit=%d,ram_quota=%d,ram_usage=%d " %(account,liquid,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_stake,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage,liquid,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_stake,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage)
             cursor.execute(sql)         
+            db.commit()
 	    
             cursor.close()
             db.close()
