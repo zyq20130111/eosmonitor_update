@@ -162,12 +162,13 @@ class accountMgr(object):
            print r
            if( r.status_code == 200):
               js = json.loads(r.text)
-
+              print js
               if (not js is None):
+            
                   cpu_used = js["cpu_limit"]["used"]
                   cpu_available = js["cpu_limit"]["available"]
                   cpu_limit     = js["cpu_limit"]["max"]
-                  
+                  print cpu_used,cpu_available,cpu_available      
 
 	          net_used      = js["net_limit"]["used"]
                   net_available = js["net_limit"]["available"]
@@ -211,12 +212,13 @@ class accountMgr(object):
             	  staked = cpu_staked + net_staked;
                   total = staked + unstaking + liquid;
 
-                  url = Config.HTTP_URL + "get_account"
+                  url = Config.HTTP_URL + "get_table_rows"
                   r = requests.post(url,data =json.dumps({"scope":"eosio","code":"eosio","table":"voters","json":True,"table_key":"owner","lower_bound":account}),headers = headers);
                   if( r.status_code == 200):
                       js = json.loads(r.text)
                       if(len(js["rows"]) > 0):
                           total_stake = js["rows"][0]["staked"]
+                          print total_stake
 
                   totalasset = total_stake + unstaking + liquid
                   self.save_stake(account,liquid ,staked,unstaking,total,total_stake,totalasset,cpu_total,cpu_staked,cpu_delegated,cpu_used,cpu_available,cpu_limit,net_total,net_staked,net_delegated,net_used,net_available,net_limit,ram_quota,ram_usage)
