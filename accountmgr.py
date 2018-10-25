@@ -123,9 +123,6 @@ class accountMgr(object):
              name = "chengyahong1"
 
              data = {"scope":name,"code":token.contract_owner,"table":"accounts","json":True,"limit":1,"lower_bound":token.symbol}
-             print json.dumps(data)
-             print json.dumps({"scope":"chengyahong1","code":"chengyahong1","table":"accounts","json":True,"limit":3,"lower_bound":"L"})
-
              r = requests.post(url,data =json.dumps(data),headers = headers);
              
              if( r.status_code == 200):
@@ -161,6 +158,7 @@ class accountMgr(object):
             cursor = db.cursor()
             sql = "INSERT INTO tokens (account,symbol ,balance,symbol_precision,contract_owner)  VALUES( %s, %s ,%s , %d ,%s ) ON DUPLICATE KEY UPDATE balance=%s,symbol_precision=%d" %(account,symbol,quantity,precision,contract,quantity,symbol_precision)
             cursor.execute(sql)
+            print sql
             db.commit()
 
             cursor.close()
