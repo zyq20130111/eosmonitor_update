@@ -88,7 +88,6 @@ class accountMgr(object):
             return True
 	
         flag = self.update_token(account)
-        flag = self.update_stake(account)
 
         return flag;                      
 
