@@ -65,7 +65,7 @@ class accountMgr(object):
         if(account == ""):
             return True
 	
-        flag = self.update_token(account)
+        #flag = self.update_token(account)
         flag = self.update_stake(account)
 
         return flag;                      
@@ -182,15 +182,17 @@ class accountMgr(object):
 
                   
 		  if( "core_liquid_balance" in js):
-                      liquid = self.getTokenNum(js["core_liquid_balance"]) * 10000
+                      if(not js["core_liquid_balance"] is None):
+                          liquid = self.getTokenNum(js["core_liquid_balance"]) * 10000
                   if("total_resources" in js):
                       total_resources = js["total_resources"]
                       if(not total_resources is None):
                          cpu_total = self.getTokenNum(total_resources["cpu_weight"]) * 10000
                                
                       if("self_delegated_bandwidth" in js):
-                         cpu_staked = self.getTokenNum(js["self_delegated_bandwidth"]["cpu_weight"]) * 10000
-                         cpu_delegated = cpu_total - cpu_staked
+                         if(not js["self_delegated_bandwidth"] is None): 
+                             cpu_staked = self.getTokenNum(js["self_delegated_bandwidth"]["cpu_weight"]) * 10000
+                             cpu_delegated = cpu_total - cpu_staked
                          
                       else:
                          cpu_delegated = cpu_total
@@ -202,8 +204,9 @@ class accountMgr(object):
                          net_total = self.getTokenNum(total_resources["net_weight"]) * 10000
                         
                       if("self_delegated_bandwidth" in js):
-                         net_staked  = self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"]) * 10000
-                         net_delegated = net_total - net_staked
+                         if(not js["self_delegated_bandwidth"] is None):
+                             net_staked  = self.getTokenNum(js["self_delegated_bandwidth"]["net_weight"]) * 10000
+                             net_delegated = net_total - net_staked
                       else:
                           net_delegated = net_total
 
