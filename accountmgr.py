@@ -118,9 +118,9 @@ class accountMgr(object):
         headers = {'content-type': "application/json"}
         url = Config.HTTP_URL + "get_table_rows"
         try:
-             token.symbol = "L"
-             token.contract_owner = "chengyahong1"
-             name = "chengyahong1"
+             #token.symbol = "L"
+             #token.contract_owner = "chengyahong1"
+             #name = "chengyahong1"
 
              data = {"scope":name,"code":token.contract_owner,"table":"accounts","json":True,"limit":1,"lower_bound":token.symbol}
              r = requests.post(url,data =json.dumps(data),headers = headers);
