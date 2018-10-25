@@ -271,7 +271,7 @@ class accountMgr(object):
             sql = "select contract_owner, issuer, symbol_precision, symbol from assets order by id"
             cursor.execute(sql)
 
-            self.tokens.clear()
+            self.tokens = []
             for row in cursor.fetchall():
 		token = Token(row[0],row[1],row[2],row[3])
                 self.tokens.append(token)
