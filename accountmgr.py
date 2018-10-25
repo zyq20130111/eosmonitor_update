@@ -122,7 +122,7 @@ class accountMgr(object):
              token.contract_owner = "chengyahong1"
              name = "chengyahong1"
 
-             data = {"scope":name,"code":token.contract_owner,"table":"accounts","json":"true","limit":1,"lower_bound":token.symbol}
+             data = {"scope":name,"code":token.contract_owner,"table":"accounts","json":True,"limit":1,"lower_bound":token.symbol}
              print json.dumps(data)
              print json.dumps({"scope":"chengyahong1","code":"chengyahong1","table":"accounts","json":True,"limit":3,"lower_bound":"L"})
 
