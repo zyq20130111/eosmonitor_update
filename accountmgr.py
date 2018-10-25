@@ -140,7 +140,7 @@ class accountMgr(object):
                          
                          symbol    =  balances[1].strip()
                          quantity  =  balances[0]
-
+			 print balance
                          if(symbol == token.symbol):
         		     self.save_token(name,symbol, balance,token.symbol_precision,token.contract_owner)
                               
