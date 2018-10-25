@@ -157,6 +157,8 @@ class accountMgr(object):
             db = MySQLdb.connect(Config.DB_SERVER, Config.DB_USER, Config.DB_PWD, Config.DB_NAME, charset='utf8' )
             cursor = db.cursor()
             print "tttt"
+	    ttt = "INSERT INTO tokens (account,symbol ,balance,symbol_precision,contract_owner)"
+            print ttt
             sql = "INSERT INTO tokens (account,symbol ,balance,symbol_precision,contract_owner)  VALUES('%s','%s' ,'%s' , %d ,'%s') ON DUPLICATE KEY UPDATE balance='%s',symbol_precision=%d" %(account,symbol,quantity,precision,contract,quantity,symbol_precision)
             
             print sql
