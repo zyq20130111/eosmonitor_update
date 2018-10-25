@@ -122,10 +122,11 @@ class accountMgr(object):
              token.contract_owner = "chengyahong1"
              name = "chengyahong1"
 
-             start = '"{0}"'.format(token.symbol)
+             symbol = '"{0}"'.format(token.symbol)
              contract ='"{0}"'.format(token.contract_owner)
              scope   = '"{0}"'.format(name)
-             data = '{"scope":%s,"code":%s,"table":"accounts","json":"true","limit":1,"lower_bound":%s}' %(scope,contract,start)
+             data = {"scope":scope,"code":contract,"table":"accounts","json":"true","limit":1,"lower_bound":symbol}
+             print symbol,contract,scope
              print data
              r = requests.post(url,data =json.dumps(data),headers = headers);
              
