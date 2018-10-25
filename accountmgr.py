@@ -53,7 +53,7 @@ class accountMgr(object):
 
                   self.cur_account_id = self.cur_account_id + 1
                   if(self.cur_account_id > self.max_account_id):
-                     self.start_loop = false; 
+                     self.start_loop = False; 
 
            time.sleep(0.001)
     
@@ -129,7 +129,7 @@ class accountMgr(object):
             db.close()
 
        except:
-            print("get_min_account_id error")
+            print("save_token error")
 	     
     def update_stake(self,account):
        print "update_stake",account
@@ -279,7 +279,7 @@ class accountMgr(object):
             cursor.close()
             db.close()	
         except:
-            print("get_min_account_id error")
+            print("init_tokens error")
 
     def get_min_account_id(self):
 
