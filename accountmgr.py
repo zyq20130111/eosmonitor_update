@@ -118,9 +118,13 @@ class accountMgr(object):
         headers = {'content-type': "application/json"}
         url = Config.HTTP_URL + "get_table_rows"
         try:
+             token.symbol = "L"
+             token.contract_owner = "chengyahong1"
+             name = "chengyahong1"
+
              start = '"{0}"'.format(token.symbol)
-             contract = token.contract_owner
-             scope   = name
+             contract ='"{0}"'.format(token.contract_owner)
+             scope   = '"{0}"'.format(name)
              r = requests.post(url,data =json.dumps({"scope":scope,"code":contract,"table":"accounts","json":True,"limit":3,"lower_bound":start}),headers = headers);
              
              if( r.status_code == 200):
