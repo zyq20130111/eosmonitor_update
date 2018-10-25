@@ -53,7 +53,7 @@ class accountMgr(object):
 
                   self.cur_account_id = self.cur_account_id + 1
                   if(self.cur_account_id > self.max_account_id):
-                     self.start_loop = False; 
+                     self.start_loop = False 
 
            time.sleep(0.001)
     
