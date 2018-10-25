@@ -108,6 +108,7 @@ class accountMgr(object):
        print "update_token",account
        for token in self.tokens:
            self.update_in_token(account,token)  
+           time.sleep(0.001)
 
        return True
 
