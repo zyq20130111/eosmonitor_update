@@ -32,32 +32,54 @@ class accountMgr(object):
         return accountMgr.__instance
 
 
-    def threadFun(self,arg):
+    def token_threadFun(self,arg):
 
        while(True):
 
-           if(not self.start_loop):
+           if(not self.token_start_loop):
             
-                self.min_account_id = self.get_min_account_id()
-                self.max_account_id = self.get_max_account_id()
-                self.cur_account_id = self.min_account_id
+                self.token_min_account_id = self.get_min_account_id()
+                self.token_max_account_id = self.get_max_account_id()
+                self.token_cur_account_id = self.token_min_account_id
 
-                self.start_loop = True
+                self.token_start_loop = True
                 self.init_tokens()
 
-                print self.min_account_id,self.max_account_id
            
-           if(self.cur_account_id >= 0):
+           if(self.token_cur_account_id >= 0):
            
-	      if(self.monitoraccount(self.cur_account_id)):
+	      if(self.update_token_account(self.token_ur_account_id)):
 
-                  self.cur_account_id = self.cur_account_id + 1
-                  if(self.cur_account_id > self.max_account_id):
-                     self.start_loop = False 
+                  self.token_cur_account_id = self.token_cur_account_id + 1
+                  if(self.token_cur_account_id > self.token_max_account_id):
+                     self.token_start_loop = False 
+
+           time.sleep(0.001)
+
+    def stake_threadFun(self,arg):
+
+       while(True):
+
+           if(not self.stake_start_loop):
+
+                self.stake_min_account_id = self.get_min_account_id()
+                self.stake_max_account_id = self.get_max_account_id()
+                self.stake_cur_account_id = self.stake_min_account_id
+
+                self.stake_start_loop = True
+
+
+           if(self.stake_cur_account_id >= 0):
+
+              if(self.update_stake_account(self.stake_cur_account_id)):
+
+                  self.stake_cur_account_id = self.stake_cur_account_id + 1
+                  if(self.stake_cur_account_id > self.stake_max_account_id):
+                     self.stake_start_loop = False
 
            time.sleep(0.001)
     
-    def monitoraccount(self,accountid):
+    def update_token_account(self,accountid):
 
         flag = False
 
@@ -65,10 +87,22 @@ class accountMgr(object):
         if(account == ""):
             return True
 	
-        #flag = self.update_token(account)
+        flag = self.update_token(account)
         flag = self.update_stake(account)
 
         return flag;                      
+
+    def update_stake_account(self,accountid):
+
+        flag = False
+
+        account = self.get_account_name(accountid)
+        if(account == ""):
+            return True
+
+        flag = self.update_stake(account)
+
+        return flag;
 
     def update_token(self,account):
 
@@ -252,14 +286,29 @@ class accountMgr(object):
             print("save stake error")
 
     def Start(self):
+        self.start_stake()
+        self.start_token()
+
+    def start_stake(self):
          
-         self.start_loop = False
-         self.min_account_id = 0
-         self.max_account_id = 0
-	 self.cur_account_id = 0
+         self.stake_start_loop = False
+         self.stake_min_account_id = 0
+         self.stake_max_account_id = 0
+	 self.stake_cur_account_id = 0
+
+         t =threading.Thread(target=self.stake_threadFun,args=(1,))
+         t.setDaemon(True)#设置线程为后台线程
+         t.start()
+
+    def start_token(self):
+
+         self.token_start_loop = False
+         self.token_min_account_id = 0
+         self.token_max_account_id = 0
+         self.token_cur_account_id = 0
          self.tokens =[]
 
-         t =threading.Thread(target=self.threadFun,args=(1,))
+         t =threading.Thread(target=self.token_threadFun,args=(1,))
          t.setDaemon(True)#设置线程为后台线程
          t.start()
 
