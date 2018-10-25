@@ -126,7 +126,7 @@ class accountMgr(object):
              print json.dumps(data)
              print json.dumps({"scope":"chengyahong1","code":"chengyahong1","table":"accounts","json":True,"limit":3,"lower_bound":"L"})
 
-             r = requests.post(url,data =json.dumps({"scope":"chengyahong1","code":"chengyahong1","table":"accounts","json":True,"limit":3,"lower_bound":"L"}),headers = headers);
+             r = requests.post(url,data =json.dumps(data),headers = headers);
              
              if( r.status_code == 200):
                  js = json.loads(r.text)
