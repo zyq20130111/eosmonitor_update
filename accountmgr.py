@@ -48,7 +48,7 @@ class accountMgr(object):
            
            if(self.token_cur_account_id >= 0):
            
-	      if(self.update_token_account(self.token_ur_account_id)):
+	      if(self.update_token_account(self.token_cur_account_id)):
 
                   self.token_cur_account_id = self.token_cur_account_id + 1
                   if(self.token_cur_account_id > self.token_max_account_id):
