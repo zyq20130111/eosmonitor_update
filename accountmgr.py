@@ -125,7 +125,9 @@ class accountMgr(object):
              start = '"{0}"'.format(token.symbol)
              contract ='"{0}"'.format(token.contract_owner)
              scope   = '"{0}"'.format(name)
-             r = requests.post(url,data =json.dumps({"scope":scope,"code":contract,"table":"accounts","json":True,"limit":3,"lower_bound":start}),headers = headers);
+             data = '{"scope":%s,"code":%s,"table":"accounts","json":True,"limit":1,"lower_bound":%s}', %(scope,contract,start)
+             print data
+             r = requests.post(url,data =json.dumps(data),headers = headers);
              
              if( r.status_code == 200):
                  js = json.loads(r.text)
